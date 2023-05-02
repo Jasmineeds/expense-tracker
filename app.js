@@ -16,6 +16,22 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/record/new', (req, res) => {
+  res.render('new')
+})
+
+app.get('/record/edit', (req, res) => {
+  res.render('edit')
+})
+
+app.get('/users/login', (req, res) => {
+  res.render('login')
+})
+
+app.get('/users/register', (req, res) => {
+  res.render('register')
+})
+
 // start and listen on the Express server
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}`)

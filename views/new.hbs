@@ -1,0 +1,47 @@
+<!-- new.hbs -->
+<div class="container mt-5">
+  <!-- title -->
+  <h2 class="mb-1 text-center">請輸入你的支出</h2>
+
+  <!-- body -->
+  <div class="container mt-5">
+    <!-- form to create new record -->
+    <form class="row g-3 mb-5" action="/records" method="POST">
+
+      <p style="color: gray;">*必填欄位</p>
+
+      <div class="col-12">
+        <label for="name" class="form-label">*名稱 Record Name</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="">
+      </div>
+      <div class="col-12">
+        <label for="date" class="form-label">*日期 Purchase Date</label>
+        <input type="date" class="form-control" id="date" name="date" placeholder="">
+      </div>
+
+      <div class="col-md-4">
+        <label for="category" class="form-label">*類別 Category</label>
+        <select id="category" class="form-select" name="category">
+          <option>Choose...</option>
+          <option value="1">家居物業</option>
+          <option value="2">交通出行</option>
+          <option value="3">休閒娛樂</option>
+          <option value="4">餐飲食品</option>
+          <option value="5">其他</option>
+        </select>
+      </div>
+
+      <div class="col-12">
+        <label for="amount" class="form-label">*金額 Amount</label>
+        <input type="number" class="form-control" id="amount" name="amount" placeholder="">
+      </div>
+
+      <div class="d-grid gap-2 mt-5">
+        <button class="btn btn-primary" type="button">新增支出 Create</button>
+        <a href="/" class="btn btn-outline-secondary">返回 Back</a>
+      </div>
+
+    </form>
+  </div>
+
+</div>
