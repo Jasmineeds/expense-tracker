@@ -9,7 +9,9 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  const { _id } = req.user
   const record = req.body
+  record.userId = _id
   Record.create(record)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
