@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// edit restaurant data
+// edit record data
 router.get('/edit/:id', (req, res) => {
   const { id } = req.params
   Record.findById(id)
@@ -30,6 +30,14 @@ router.get('/edit/:id', (req, res) => {
 router.put('/:id', (req, res) => {
   const { id } = req.params
   Record.findByIdAndUpdate(id, req.body)
+    .then(() => res.redirect('/'))
+    .catch(err => console.log(err))
+})
+
+// delete record data
+router.delete('/:id', (req, res) => {
+  const { id } = req.params
+  Record.findByIdAndDelete(id)
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
