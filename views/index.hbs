@@ -8,18 +8,18 @@
         類別
       </button>
       <ul class="dropdown-menu" style="min-width: 300px;" aria-labelledby="category">
-        <li><a class="dropdown-item" href="#">家居物業</a></li>
-        <li><a class="dropdown-item" href="#">交通出行</a></li>
-        <li><a class="dropdown-item" href="#">休閒娛樂</a></li>
-        <li><a class="dropdown-item" href="#">餐飲食品</a></li>
-        <li><a class="dropdown-item" href="#">其他</a></li>
+        <li><a class="dropdown-item" href="/category/1">家居物業</a></li>
+        <li><a class="dropdown-item" href="/category/2">交通出行</a></li>
+        <li><a class="dropdown-item" href="/category/3">休閒娛樂</a></li>
+        <li><a class="dropdown-item" href="/category/4">餐飲食品</a></li>
+        <li><a class="dropdown-item" href="/category/5">其他</a></li>
       </ul>
     </div>
 
     <!-- show total amount -->
-    <div class="d-flex justify-content-between">
+    <div class="totalAmount d-flex justify-content-between">
       <p>總金額：</p>
-      <h1>25260</h1>
+      <h1>{{totalAmount}}</h1>
     </div>
 
     <!-- record list -->
@@ -30,7 +30,7 @@
         <div class="row" style="min-width: 400px;">
           <div class="d-flex">
             <div class="d-flex align-items-center w-100 bd-highlight">
-              <i class="fa-solid fa-utensils" style="font-size: 50px; color:aquamarine"></i>
+              <i class="fa-solid fa-{{this.icon}}" style="font-size: 50px; color:aquamarine"></i>
               <div class="m-2">
                 <p class="m-0" style="font: size 28px;">
                   {{this.name}}
@@ -51,13 +51,16 @@
       <!-- action btn -->
       <li class="list-group-item">
         <div class="d-flex align-items-center">
-          <a class="btn btn-success m-1" href="./records/edit/{{ this._id }}">Edit</a>
-          <form action="./records/{{ this._id }}?_method=DELETE" method="POST">
+          <a class="btn btn-success m-1" href="/records/edit/{{ this._id }}">Edit</a>
+          <form action="/records/{{ this._id }}?_method=DELETE" method="POST">
             <button class="btn btn-danger m-1" type="submit">Delete</button>
           </form>
         </div>
       </li>
     </ul>
+    <!-- increment total amount -->
+    {{#with (add ../totalAmount this.amount)}}
+    {{/with}}
     {{/each}}
 
     <!-- Create new record btn -->
@@ -66,6 +69,4 @@
     </div>
 
   </div>
-
-
 </div>

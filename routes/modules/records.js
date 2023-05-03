@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const Record = require('../../models/record')
-const { formattedDate } = require('../../models/formattedDate')
+const { formattedDate } = require('../../models/formattedRecord')
 
 // create new record data
 router.get('/new', (req, res) => {
