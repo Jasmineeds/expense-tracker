@@ -1,3 +1,4 @@
+// formate record raw data to displayable info for render
 // category icon
 const CATEGORY = {
   1: "https://fontawesome.com/icons/home?style=solid",

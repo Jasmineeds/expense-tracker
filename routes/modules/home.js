@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Record = require('../../models/record')
 const { formattedRecords } = require('../../models/formattedRecord')
+const { calAmount } = require('../../models/calAmount')
 
 // view user's records
 router.get('/', (req, res) => {
@@ -11,7 +12,8 @@ router.get('/', (req, res) => {
     .sort({ _id: 'asc' })
     .then(records => {
       records = formattedRecords(records)
-      res.render('index', { records })
+      let totalAmount = calAmount(records)
+      res.render('index', { records, totalAmount })
     })
     .catch(error => console.error(error))
 })
@@ -26,7 +28,8 @@ router.get(`/category/:id`, (req, res) => {
     .then(records => {
       console.log(records)
       records = formattedRecords(records)
-      res.render('index', { records })
+      let totalAmount = calAmount(records)
+      res.render('index', { records, totalAmount })
     })
     .catch(error => console.error(error))
 })
