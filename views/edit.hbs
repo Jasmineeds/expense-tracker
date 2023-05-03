@@ -6,22 +6,22 @@
   <!-- body -->
   <div class="container mt-5">
     <!-- form to edit record -->
-    <form class="row g-3 mb-5" action="/records" method="POST">
+    <form class="row g-3 mb-5" action="/records/{{record._id}}?_method=PUT" method="POST">
 
       <p style="color: gray;">*必填欄位</p>
 
       <div class="col-12">
         <label for="name" class="form-label">*名稱 Record Name</label>
-        <input type="text" class="form-control" id="name" name="name" value="">
+        <input type="text" class="form-control" id="name" name="name" value="{{record.name}}">
       </div>
       <div class="col-12">
         <label for="date" class="form-label">*日期 Purchase Date</label>
-        <input type="date" class="form-control" id="date" name="date" value="">
+        <input type="date" class="form-control" id="date" name="date" value="{{record.date}}">
       </div>
 
       <div class="col-md-4">
         <label for="category" class="form-label">*類別 Category</label>
-        <select id="category" class="form-select" name="category">
+        <select id="category" class="form-select" name="category" value="{{record.categoryId}}">
           <option>Choose...</option>
           <option value="1">家居物業</option>
           <option value="2">交通出行</option>
@@ -33,15 +33,26 @@
 
       <div class="col-12">
         <label for="amount" class="form-label">*金額 Amount</label>
-        <input type="number" class="form-control" id="amount" name="amount" value="">
+        <input type="number" class="form-control" id="amount" name="amount" value="{{record.amount}}">
       </div>
 
       <div class="d-grid gap-2 mt-5">
-        <button class="btn btn-primary" type="button">送出 Submit</button>
+        <button class="btn btn-primary" type="submit">送出 Submit</button>
         <a href="/" class="btn btn-outline-secondary">返回 Back</a>
       </div>
 
     </form>
   </div>
+
+  <!-- script -->
+  <script>
+    // 獲取時間
+    const date = {{ record.date }}
+    // 格式化時間字符串
+    const dateString = date.toISOString().substr(0, 10)
+    // 將時間設置為input元素的值
+    document.getElementById("date").value = dateString
+    document.getElementById("categoryId").value = {{ record.categoryId }}
+  </script>
 
 </div>

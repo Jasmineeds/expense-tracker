@@ -1,4 +1,4 @@
-function formattedDate(records) {
+function formattedDates(records) {
   return records.map(record => {
     const date = new Date(record.date)
     const formattedDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
@@ -7,4 +7,14 @@ function formattedDate(records) {
   })
 }
 
-module.exports = formattedDate
+function formattedDate(record) {
+  const date = new Date(record.date)
+  const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+  record.date = formattedDate
+  return record
+}
+
+module.exports = {
+  formattedDates,
+  formattedDate
+}

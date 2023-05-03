@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const Record = require('../../models/record')
-const formattedDate = require('../../models/formattedDate')
+const { formattedDates } = require('../../models/formattedDate')
 
 // view user's restaurants
 router.get('/', (req, res) => {
@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     .lean()
     // .sort({ _id: 'asc' })
     .then(records => {
-      records = formattedDate(records)
+      records = formattedDates(records)
       res.render('index', { records })
     })
     .catch(error => console.error(error))
