@@ -44,15 +44,4 @@
     </form>
   </div>
 
-  <!-- script -->
-  <script>
-    // 獲取時間
-    const date = {{ record.date }}
-    // 格式化時間字符串
-    const dateString = date.toISOString().substr(0, 10)
-    // 將時間設置為input元素的值
-    document.getElementById("date").value = dateString
-    document.getElementById("categoryId").value = {{ record.categoryId }}
-  </script>
-
 </div>

@@ -24,15 +24,14 @@ router.post('/register', (req, res) => {
   const errors = []
 
   if (!email || !password || !confirmPassword) {
-    console.log('請輸入所需欄位')
     errors.push({ message: '請輸入所需欄位' })
   }
   if (password !== confirmPassword) {
-    console.log('兩次密碼不相符．')
     errors.push({ message: '兩次密碼不相符．' })
   }
   if (errors.length) {
     return res.render('register', {
+      errors,
       name,
       email,
       password,
@@ -43,9 +42,9 @@ router.post('/register', (req, res) => {
   User.findOne({ email }).then(user => {
     // email registered：back to register page
     if (user) {
-      console.log('Email 已被註冊．')
       errors.push({ message: 'Email 已被註冊．' })
       return res.render('register', {
+        errors,
         name,
         email,
         password,
@@ -68,7 +67,7 @@ router.post('/register', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  // req.flash('success_msg', '您已成功登出．')
+  req.flash('success_msg', '您已成功登出．')
   req.logout()
   res.redirect('/users/login')
 })
