@@ -2,8 +2,8 @@ const db = require('../../config/mongoose')
 const Record = require('../record')
 const User = require('../user')
 
-const SEED_RECORD = require('../../record.json') // record raw data in json
-const SEED_USER = require('../../user.json') // user raw data in json
+const SEED_RECORD = require('./record.json') // record raw data in json
+const SEED_USER = require('./user.json') // user raw data in json
 const bcrypt = require('bcryptjs')
 
 if (process.env.NODE_ENV !== 'production') {
